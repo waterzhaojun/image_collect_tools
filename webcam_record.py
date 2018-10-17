@@ -10,9 +10,9 @@ import cv2
 #import imutils
 import argparse
 
-def main(videoname, fps, framesize, showVideo):
+def main(videoname, fps, framesize, showVideo, port):
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(port)
     # cap.set(cv2.CAP_PROP_FPS, 1)
     # cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -28,7 +28,7 @@ def main(videoname, fps, framesize, showVideo):
 
         if ret:
             out.write(frame)
-            print(out.isOpened())
+
             if showVideo:
                 
                 cv2.imshow('frame',frame)
@@ -54,8 +54,10 @@ if __name__== "__main__":      #This is py27 version code.
                         help='frame size')
     parser.add_argument('--showVideo', default = False, type = bool,
                         help = 'Whether show the video during recording')
+    parser.add_argument('--port', default = 0, type = int,
+                        help = 'webcam port')
 
     args = parser.parse_args()
 
     main(videoname=args.videoname, fps=args.fps, framesize = args.framesize,
-         showVideo = args.showVideo)
+         showVideo = args.showVideo, port = args.port)
