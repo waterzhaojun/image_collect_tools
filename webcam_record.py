@@ -5,20 +5,34 @@ Created on Sat Oct 13 09:13:00 2018
 
 @author: Melody
 """
-
 import cv2
+import datetime
 #import imutils
 import argparse
 
 def main(videoname, fps, framesize, showVideo, port):
+    
+    # set file name
+    if videoname is None:
+        thedate = datetime.datetime.now().date().strftime('%Y%b%d')
+        thetime = datetime.datetime.now().time().strftime('%H%M%S')
+        videoname = thedate + '_' + thetime
 
     cap = cv2.VideoCapture(port)
     # cap.set(cv2.CAP_PROP_FPS, 1)
-    # cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-    # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    
+    # set frame width and height here won't change the output frame size
+    # You have to resize it after create at below.
+    # cap.set(cv2.CAP_PROP_FRAME_WIDTH, framesize[0])
+    # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, framesize[1])
+    
     fourcc = cv2.VideoWriter_fourcc('m','p','4','v')
-    # fourcc = cv2.CV_fourcc('m', 'p', '4', 'v')
     out = cv2.VideoWriter(videoname+'.mov', fourcc, fps, framesize)
+    
+    
+        
+    
+    # After create VideoWriter it will open by default.
     #out.open()
 
     while(True):
@@ -46,11 +60,11 @@ def main(videoname, fps, framesize, showVideo, port):
 #main()
 if __name__== "__main__":      #This is py27 version code.
     parser = argparse.ArgumentParser(description='record video')
-    parser.add_argument('--videoname', default = 'new',
+    parser.add_argument('--videoname', default = None,
                         help='the name of the video')
     parser.add_argument('--fps', default = 10, type = int,
                         help='fps of the output video')
-    parser.add_argument('--framesize', default = (200,100), 
+    parser.add_argument('--framesize', default = (800,450), 
                         help='frame size')
     parser.add_argument('--showVideo', default = False, type = bool,
                         help = 'Whether show the video during recording')
