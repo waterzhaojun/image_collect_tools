@@ -10,7 +10,7 @@ import datetime
 #import imutils
 import argparse
 
-def main(videoname, fps, framesize, showVideo, port):
+def main(videoname, fps, framesize, showVideo, port, resizeframe):
     
     # set file name
     if videoname is None:
@@ -38,9 +38,11 @@ def main(videoname, fps, framesize, showVideo, port):
     while(True):
         # Capture frame-by-frame
         ret, frame = cap.read()
-        frame = cv2.resize(frame, framesize)
+        
 
         if ret:
+            if resizeframe:
+                frame = cv2.resize(frame, framesize)
             out.write(frame)
 
             if showVideo:
@@ -48,7 +50,7 @@ def main(videoname, fps, framesize, showVideo, port):
                 cv2.imshow('frame',frame)
         else:
             print('Not ready')
-            break
+            # break
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
@@ -64,9 +66,11 @@ if __name__== "__main__":      #This is py27 version code.
                         help='the name of the video')
     parser.add_argument('--fps', default = 10, type = int,
                         help='fps of the output video')
+    parser.add_argument('--resizeframe', default = True, type = bool,
+                        help='Whether resize the video frame')
     parser.add_argument('--framesize', default = (800,450), 
                         help='frame size')
-    parser.add_argument('--showVideo', default = False, type = bool,
+    parser.add_argument('--showVideo', default = True, type = bool,
                         help = 'Whether show the video during recording')
     parser.add_argument('--port', default = 0, type = int,
                         help = 'webcam port')
@@ -74,4 +78,4 @@ if __name__== "__main__":      #This is py27 version code.
     args = parser.parse_args()
 
     main(videoname=args.videoname, fps=args.fps, framesize = args.framesize,
-         showVideo = args.showVideo, port = args.port)
+         showVideo = args.showVideo, port = args.port, resizeframe = args.resizeframe)
