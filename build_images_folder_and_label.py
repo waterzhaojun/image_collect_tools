@@ -102,10 +102,11 @@ def main(path, ratio, remove_tmp_folder, resize, size):
             height, width, depth = image.shape
             
             feature = {'label': _int64_feature(label),
-                       'image': _bytes_feature(tf.compat.as_bytes(image.tostring())),
-                       'height': _int64_feature(height),
-                       'width': _int64_feature(width),
-                       'depth': _int64_feature(depth)}
+                       'image': _bytes_feature(tf.compat.as_bytes(image.tostring()))
+                       #'height': _int64_feature(height),
+                       #'width': _int64_feature(width),
+                       #'depth': _int64_feature(depth)
+                       }
             
             example = tf.train.Example(features=tf.train.Features(feature=feature))
             
@@ -131,7 +132,7 @@ if __name__== "__main__":
                         type = bool, help = 'whether remove the tmp folder after the process')
     parser.add_argument('--resize', default = True,
                         type = bool, help = 'whether resize the images')
-    parser.add_argument('--size', default = (150, 150),
+    parser.add_argument('--size', default = (299, 299),
                         type = int, help = 'if resize the image, what is the new size')
     args = parser.parse_args()
     
