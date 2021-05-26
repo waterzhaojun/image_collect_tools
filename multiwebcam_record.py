@@ -81,7 +81,7 @@ if __name__== "__main__":      #This is py27 version code.
     parser = argparse.ArgumentParser(description='record video')
     parser.add_argument('--videoname', default = None,
                         help='the name of the video')
-    parser.add_argument('--fps', default = 10, type = int,
+    parser.add_argument('--fps', default = 30, type = int,
                         help='fps of the output video')
     parser.add_argument('--framesize', default = (480,270), 
                         help='The frame size of each webcam output image.')
