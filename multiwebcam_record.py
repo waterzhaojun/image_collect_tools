@@ -19,7 +19,7 @@ def main(savepath, fps, framesize, showVideo, portNum, passPortNum):
     # setting ========================================
     cols = 2 # How many cols show in the monitor.
     file_format = '.mov' # Output file type.
-    fourcc = cv2.VideoWriter_fourcc('M','P','G','4')#('m','p','4','v') # compress code
+    fourcc = cv2.VideoWriter_fourcc('M','P','4','v')#('m','p','4','v') # compress code
     monitor_framesize = [int(framesize[0]/2), int(framesize[1]/2)] # the camera size showed in monitor. It could be different to save size.
 
     if passPortNum == None:
