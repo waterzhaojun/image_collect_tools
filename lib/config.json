@@ -1,4 +1,17 @@
 {
     "sourceFolder": "source",
-    "outputFolder": "output"
+    "outputFolder": "/Users/Melody/Pictures/behavior",
+    "output_video_width": 640,
+    "output_video_height": 480,
+    "monitor_video_width": 320,
+    "monitor_video_height": 240,
+    "video_collect_rate": 30,
+    "video_write_rate": 10,
+    "monitor_col_num": 2,
+    "output_file_ext": "mov",
+    "compress_code": "",
+    "port_list": [0,1],
+    "monitor_online": true,
+    "fourcc": "mp4v"
+
 }

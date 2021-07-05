@@ -19,8 +19,10 @@ def main(videoname, fps, framesize, showVideo, port, resizeframe):
         videoname = thedate + '_' + thetime
 
     cap = cv2.VideoCapture(port)
-    # cap.set(cv2.CAP_PROP_FPS, 1)
-    
+    print(cv2.__version__)
+    print(cap.get(cv2.CAP_PROP_FPS)) #查看这个video源的fps
+    cap.set(cv2.CAP_PROP_FPS, 15) #重设这个video源的采集fps
+    print(cap.get(cv2.CAP_PROP_FPS))
     # set frame width and height here won't change the output frame size
     # You have to resize it after create at below.
     # cap.set(cv2.CAP_PROP_FRAME_WIDTH, framesize[0])
