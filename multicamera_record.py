@@ -53,7 +53,7 @@ class Recorder:
                 if self.record_flag and ((self.counter / config['video_write_rate']) < (time.time()-self.tic)):
                     self.writer.write(videoframe)
                     self.counter += 1
-                    print('%s: %f' % (self.name, round(time.time() - self.tic, 1)))
+                    #print('%s: %f' % (self.name, round(time.time() - self.tic, 1)))
             
             if self.end_flag:
                 break

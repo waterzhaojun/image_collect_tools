@@ -10,7 +10,7 @@
     "monitor_col_num": 2,
     "output_file_ext": "mov",
     "compress_code": "",
-    "port_list": [0,1],
+    "port_list": [1,2],
     "monitor_online": true,
     "fourcc": "mp4v"
 
